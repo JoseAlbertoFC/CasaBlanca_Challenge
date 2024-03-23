@@ -4,7 +4,7 @@ const destroyClient = async (id) => {
   try {
     const client = await Client.findByPk(id);
     if (!client) {
-      throw new Error(`No se encontró el cliente con el ID: ${id}`);
+      throw new Error(`The client with ID ${id} was not found.`);
     }
 
     const clientData = client.toJSON();
