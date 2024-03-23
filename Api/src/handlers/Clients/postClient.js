@@ -1,10 +1,17 @@
 const { createClient } = require("../../controllers/Clients/createClient");
 
 const postClient = async (req, res) => {
-  const { fullName, email, age, phoneNum, status } = req.body;
+  const { fullName, email, age, phoneNum, status, userId } = req.body;
 
   try {
-    const result = await createClient(fullName, email, age, phoneNum, status);
+    const result = await createClient(
+      fullName,
+      email,
+      age,
+      phoneNum,
+      status,
+      userId
+    );
     res.status(200).json(result);
   } catch (error) {
     console.log(error.message);
