@@ -3,10 +3,11 @@ const { User, Client } = require("../../db");
 const showUsers = async () => {
     try {
         return await User.findAll({
+            attributes: { exclude: ['password'] }, 
             include: [
                 {
                     model: Client,
-                    as: "clients"
+                    as: "clients",
                 },
             ],
         })
