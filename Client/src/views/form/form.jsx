@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useDispatch } from 'react-redux'; 
-import { addUser } from '../../redux/actions';
 import axios from 'axios';
 import "./form.css";
 
@@ -11,7 +9,6 @@ function Form() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -23,15 +20,8 @@ function Form() {
 
     try {
       const newUser = { fullName, email, password };
-      const response = await axios.post('http://localhost:3001/users/createUser', {
-        fullName,
-        email,
-        password
-      });
-
-      console.log("Respuesta de registro:", response.data);
+      await axios.post('http://localhost:3001/users/createUser', newUser);
       alert("Registro exitoso. Por favor, ingresa con tu cuenta.");
-      dispatch(addUser(newUser));
       navigate('/login');
     } catch (error) {
       console.error('Error de registro:', error);
