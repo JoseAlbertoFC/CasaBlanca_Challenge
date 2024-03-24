@@ -10,8 +10,11 @@ function Home() {
   const [selectedSection, setSelectedSection] = useState("clients");
   const navigate = useNavigate();
 
+  const userName = localStorage.getItem("userName");
+
   const handleLogout = () => {
     localStorage.removeItem("accessToken");
+    localStorage.removeItem("userName");
     navigate('/login');
   };
 
@@ -20,7 +23,7 @@ function Home() {
       <SideBar onSelectedSection={setSelectedSection} />
       <div className="main-content">
         <header className="user-header">
-          <h2 className="user-name">Nombre de Usuario</h2>
+          <h2 className="user-name">{userName || "Nombre de Usuario"}</h2>
           <button className="logout-button" onClick={handleLogout}>Logout</button>
         </header>
         <div className="content">

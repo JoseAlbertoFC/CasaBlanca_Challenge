@@ -10,7 +10,7 @@ const authUser = async (email, password) => {
 
   const JWT_SECRET = process.env.JWT_SECRET;
   const accessToken = jwt.sign(
-    { userId: user.id, email: user.email },
+    { userId: user.id, email: user.email, userName: user.name },
     JWT_SECRET,
     { expiresIn: "730h" }
   );
@@ -18,7 +18,7 @@ const authUser = async (email, password) => {
   return {
     userId: user.id,
     email: user.email,
-    name: user.name,
+    userName: user.fullName,
     accessToken,
     message: "Perfect! You are logged in.",
   };
