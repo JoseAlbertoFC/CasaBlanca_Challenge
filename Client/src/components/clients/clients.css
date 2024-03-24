@@ -15,6 +15,24 @@
   font-size: 1.5rem;
 }
 
+.add-client-button {
+  background-color:#007bff; /* Verde, puedes cambiarlo por el color que prefieras */
+  color: white;
+  padding: 10px;
+  margin-bottom: 10px;
+  max-width: 100%; 
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s
+}
+
+.add-client-button:hover {
+  background-color: #0056b3; /* Un verde un poco más oscuro para el hover */
+  /* Efecto de crecimiento al pasar el mouse */
+}
+
 .clients-list {
   background-color: #f4f4f4; 
   max-height: 450px; 
@@ -40,6 +58,7 @@
   text-align: center;
   padding: 10px 0; 
   font-size: 1.1rem; 
+  color: gray;
 }
 
 @media (max-width: 768px) {

@@ -1,4 +1,6 @@
 import React from "react";
+import { useState } from "react";
+import AddClient from "../addClient/addClient";
 import "./clients.css";
 
 const clientList = [
@@ -18,9 +20,24 @@ const clientList = [
 ];
 
 function Clients() {
+  const [addingClient, setAddingClient] = useState(false);
+
+  const handleAddClientClick = () => {
+    setAddingClient(true);
+  };
+
+  const handleBackClick = () => {
+    setAddingClient(false);
+  };
+
+  if (addingClient) {
+    return <AddClient onBackClick={handleBackClick} />;
+  }
+
   return (
     <div className="clients-container">
       <h2 className="clients-title">Mis Clientes</h2>
+      <button className="add-client-button" onClick={handleAddClientClick}>Añadir Cliente</button>
       <div className="clients-list">
         {clientList.map(client => (
           <div key={client.id} className="client-item">
