@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import axios from 'axios';
+import axios from "axios";
 import AddClient from "../addClient/addClient";
 import "./clients.css";
 
@@ -13,15 +13,18 @@ function Clients() {
   }, []);
 
   const fetchClients = async () => {
-    const userId = localStorage.getItem('userId');
+    const userId = localStorage.getItem("userId");
     if (userId) {
       try {
-        const response = await axios.get(`http://localhost:3001/clients/showClients`, {
-          headers: { userId }
-        });
+        const response = await axios.get(
+          `http://localhost:3001/clients/showClients`,
+          {
+            headers: { userId },
+          }
+        );
         setClients(response.data);
       } catch (error) {
-        console.error('Error al obtener los clientes:', error);
+        console.error("Error al obtener los clientes:", error);
       }
     }
   };
@@ -29,25 +32,27 @@ function Clients() {
   const toggleClientStatus = async (client) => {
     const updatedClient = {
       ...client,
-      status: client.status === 'Habilitado' ? 'Deshabilitado' : 'Habilitado'
+      status: client.status === "Habilitado" ? "Deshabilitado" : "Habilitado",
     };
 
     try {
-      await axios.put(`http://localhost:3001/clients/updateClient/${client.id}`, updatedClient);
-      fetchClients(); 
+      await axios.put(
+        `http://localhost:3001/clients/updateClient/${client.id}`,
+        updatedClient
+      );
+      fetchClients();
     } catch (error) {
-      console.error('Error al cambiar el estado del cliente:', error);
+      console.error("Error al cambiar el estado del cliente:", error);
     }
   };
-  
 
   const deleteClient = async (id) => {
     if (window.confirm("¿Estás seguro de que deseas eliminar este cliente?")) {
       try {
         await axios.delete(`http://localhost:3001/clients/deleteClient/${id}`);
-        fetchClients(); 
+        fetchClients();
       } catch (error) {
-        console.error('Error al eliminar el cliente:', error);
+        console.error("Error al eliminar el cliente:", error);
       }
     }
   };
@@ -62,15 +67,19 @@ function Clients() {
   };
 
   if (addingClient) {
-    return <AddClient onBackClick={handleBackClick} fetchClients={fetchClients}/>;
+    return (
+      <AddClient onBackClick={handleBackClick} fetchClients={fetchClients} />
+    );
   }
 
   return (
     <div className="clients-container">
       <h2 className="clients-title">Mis Clientes</h2>
-      <button className="add-client-button" onClick={handleAddClientClick}>Añadir Cliente</button>
+      <button className="add-client-button" onClick={handleAddClientClick}>
+        Añadir Cliente
+      </button>
       <div className="clients-list">
-        {clients.map(client => (
+        {clients.map((client) => (
           <div key={client.id} className="client-item">
             <span>{client.fullName}</span>
             <span>{client.age}</span>
@@ -80,12 +89,18 @@ function Clients() {
               <label>
                 <input
                   type="checkbox"
-                  checked={client.status === 'Habilitado'}
+                  checked={client.status === "Habilitado"}
                   onChange={() => toggleClientStatus(client)}
-                /> {client.status}
+                />{" "}
+                {client.status}
               </label>
             </span>
-            <button onClick={() => deleteClient(client.id)} className="delete-client-button">X</button>
+            <button
+              onClick={() => deleteClient(client.id)}
+              className="delete-client-button"
+            >
+              X
+            </button>
           </div>
         ))}
       </div>

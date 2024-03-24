@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from 'axios';
+import axios from "axios";
 import "./login.css";
 
 function Login() {
@@ -12,25 +12,25 @@ function Login() {
     e.preventDefault();
 
     try {
-      console.log(email, password)
-      const response = await axios.post('http://localhost:3001/users/loginUser', {
-        email,
-        password
-      });
+      const response = await axios.post(
+        "http://localhost:3001/users/loginUser",
+        {
+          email,
+          password,
+        }
+      );
 
       const { userId, userName, accessToken } = response.data;
       if (accessToken) {
         localStorage.setItem("accessToken", accessToken);
         localStorage.setItem("userId", userId);
         localStorage.setItem("userName", userName);
-        navigate('/');
+        navigate("/");
       }
     } catch (error) {
-      console.error('Login error:', error);
-      window.alert("Hubo un problema al intentar ingresar.");
+      alert("Credenciales Invalidas. Ingresa un Usuario y Contraseña validos.");
     }
   };
-  
 
   return (
     <div className="login-page-container">
@@ -61,15 +61,19 @@ function Login() {
           />
         </div>
         <h5 className="signUp-link">
-          ¿Aun no te haz registrado? Para registrarte haz 
-          <Link to="/signup" className="signUp-link-anchor"> click aqui</Link>.
+          ¿Aun no te haz registrado? Para registrarte haz
+          <Link to="/signup" className="signUp-link-anchor">
+            {" "}
+            click aqui
+          </Link>
+          .
         </h5>
-        <button className="login-button" type="submit">Ingresar</button>
+        <button className="login-button" type="submit">
+          Ingresar
+        </button>
       </form>
     </div>
   );
 }
 
 export default Login;
-
-

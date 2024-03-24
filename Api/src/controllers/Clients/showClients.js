@@ -7,7 +7,7 @@ const showClients = async (userId) => {
         {
           model: User,
           as: "user",
-          where: { id: userId }
+          where: { id: userId },
         },
       ],
     });

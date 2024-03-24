@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from 'axios';
+import axios from "axios";
 import "./form.css";
 
 function Form() {
@@ -20,12 +20,12 @@ function Form() {
 
     try {
       const newUser = { fullName, email, password };
-      await axios.post('http://localhost:3001/users/createUser', newUser);
+      await axios.post("http://localhost:3001/users/createUser", newUser);
       alert("Registro exitoso. Por favor, ingresa con tu cuenta.");
-      navigate('/login');
+      navigate("/login");
     } catch (error) {
-      console.error('Error de registro:', error);
-      alert("Hubo un problema al intentar registrarse.");
+      console.error("Error de registro:", error);
+      alert("Ya existe una cuenta con este Email.");
     }
   };
 
@@ -81,8 +81,13 @@ function Form() {
             required
           />
         </div>
-        <h5 className="login-link">¿Ya estas registrado? Para ingresar 
-        <Link to="/login" className="login-link-anchor"> click aqui</Link>.
+        <h5 className="login-link">
+          ¿Ya estas registrado? Para ingresar
+          <Link to="/login" className="login-link-anchor">
+            {" "}
+            click aqui
+          </Link>
+          .
         </h5>
         <button className="form-button" type="submit">
           Registrarse

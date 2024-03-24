@@ -1,98 +1,98 @@
 .add-client-container {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 40px;
-    background-color: #ADD8E6;
-    border-radius: 10px;
-    width: 50%;
-    max-width: 600px;
-    margin-top: 90px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+  background-color: #add8e6;
+  border-radius: 10px;
+  width: 50%;
+  max-width: 600px;
+  margin-top: 90px;
 }
 
 .back-button {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    border: none;
-    background-color: #f0f0f0;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    font-size: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    color: gray;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  border: none;
+  background-color: #f0f0f0;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: gray;
 }
 
 .add-client-title {
-    margin-bottom: 25px;
-    text-align: center;
-    font-size: 170%;
-    color: gray;
+  margin-bottom: 25px;
+  text-align: center;
+  font-size: 170%;
+  color: gray;
 }
 
 .add-client-form {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 .form-group {
-    margin-bottom: 15px;
-    width: 100%;
+  margin-bottom: 15px;
+  width: 100%;
 }
 
 .form-label {
-    margin-bottom: 5px;
-    width: 100%;
+  margin-bottom: 5px;
+  width: 100%;
 }
 
 .form-input {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
 .add-client-button {
-    width: 101%;
-    padding: 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+  width: 101%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .add-client-button:hover {
-    background-color: #0056b3;
+  background-color: #0056b3;
 }
 
 @media (max-width: 768px) {
-    .add-client-container {
-        width: 80%; 
-        padding: 20px; 
-    }
+  .add-client-container {
+    width: 80%;
+    padding: 20px;
+  }
 
-    .add-client-title {
-        font-size: 150%; 
-    }
+  .add-client-title {
+    font-size: 150%;
+  }
 }
 
 @media (max-width: 480px) {
-    .add-client-container {
-        width: 95%; 
-    }
+  .add-client-container {
+    width: 95%;
+  }
 
-    .add-client-title {
-        font-size: 130%; 
-    }
+  .add-client-title {
+    font-size: 130%;
+  }
 
-    .form-input,
-    .add-client-button {
-        padding: 8px; 
-    }
+  .form-input,
+  .add-client-button {
+    padding: 8px;
+  }
 }

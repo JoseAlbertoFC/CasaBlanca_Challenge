@@ -16,7 +16,6 @@ const deleteClient = async (req, res) => {
   } catch (error) {
     console.log(error.message);
     res.status(400).json({ error: error.message });
-    throw new Error(error.message);
   }
 };
 

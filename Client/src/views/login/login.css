@@ -39,10 +39,10 @@
   border: 1px solid #ccc;
 }
 
-.signUp-link{
-    text-align: center;
-    font-weight: lighter;
-    color: gray;
+.signUp-link {
+  text-align: center;
+  font-weight: lighter;
+  color: gray;
 }
 
 .login-button {
@@ -71,7 +71,7 @@
 }
 
 .signUp-link-anchor {
-  color: #007BFF;
+  color: #007bff;
   text-decoration: none;
 }
 

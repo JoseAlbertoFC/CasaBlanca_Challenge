@@ -1,7 +1,7 @@
 const { authUser } = require("../../controllers/Users/authUser");
 
 const loginUser = async (req, res) => {
-    const { email, password } = req.body;
+  const { email, password } = req.body;
 
   try {
     const result = await authUser(email, password);
@@ -9,10 +9,9 @@ const loginUser = async (req, res) => {
   } catch (error) {
     console.log(error.message);
     res.status(400).json({ error: error.message });
-    throw new Error(error.message);
   }
-}
+};
 
 module.exports = {
-    loginUser
-}
+  loginUser,
+};

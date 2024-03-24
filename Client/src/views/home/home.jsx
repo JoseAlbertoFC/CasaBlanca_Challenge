@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import SideBar from "../../components/sideBar/sideBar";
 import Clients from "../../components/clients/clients";
 import Users from "../../components/users/users";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 import "./home.css";
 
 function Home() {
@@ -15,7 +17,7 @@ function Home() {
   const handleLogout = () => {
     localStorage.removeItem("accessToken");
     localStorage.removeItem("userName");
-    navigate('/login');
+    navigate("/login");
   };
 
   return (
@@ -23,8 +25,13 @@ function Home() {
       <SideBar onSelectedSection={setSelectedSection} />
       <div className="main-content">
         <header className="user-header">
-          <h2 className="user-name">{userName || "Nombre de Usuario"}</h2>
-          <button className="logout-button" onClick={handleLogout}>Logout</button>
+        <h2 className="user-name">
+            {userName || "Nombre de Usuario"}
+            <FontAwesomeIcon icon={faUser} /> 
+          </h2>
+          <button className="logout-button" onClick={handleLogout}>
+            Logout
+          </button>
         </header>
         <div className="content">
           {selectedSection === "clients" && <Clients />}
@@ -36,4 +43,3 @@ function Home() {
 }
 
 export default Home;
-

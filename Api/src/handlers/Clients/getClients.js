@@ -7,11 +7,10 @@ const getClients = async (req, res) => {
       throw new Error("No userId provided");
     }
     const result = await showClients(userId);
-    res.status(200).json(result)
+    res.status(200).json(result);
   } catch (error) {
     console.log(error.message);
     res.status(400).json({ error: error.message });
-    throw new Error(error.message);
   }
 };
 

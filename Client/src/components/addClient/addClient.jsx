@@ -1,46 +1,50 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { useState } from "react";
+import axios from "axios";
 import "./addClient.css";
 
-function AddClient({ onBackClick, fetchClients}) {
-  const [fullName, setFullName] = useState('');
-  const [email, setEmail] = useState('');
-  const [age, setAge] = useState('');
-  const [phone, setPhone] = useState('');
+function AddClient({ onBackClick, fetchClients }) {
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [age, setAge] = useState("");
+  const [phone, setPhone] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const userId = localStorage.getItem('userId');
+    const userId = localStorage.getItem("userId");
 
     if (!userId) {
-      alert('No se ha encontrado el ID del usuario.');
+      alert("No se ha encontrado el ID del usuario.");
       return;
     }
 
     try {
-      const response = await axios.post('http://localhost:3001/clients/createClient', {
-        fullName,
-        email,
-        age: parseInt(age, 10), 
-        phoneNum: phone,
-        status: 'Habilitado',
-        userId
-      });
+      const response = await axios.post(
+        "http://localhost:3001/clients/createClient",
+        {
+          fullName,
+          email,
+          age: parseInt(age, 10),
+          phoneNum: phone,
+          status: "Habilitado",
+          userId,
+        }
+      );
 
-      console.log('Cliente añadido:', response.data);
-      alert('Cliente añadido exitosamente.');
-      fetchClients()
-      onBackClick(); 
+      console.log("Cliente añadido:", response.data);
+      alert("Cliente añadido exitosamente.");
+      fetchClients();
+      onBackClick();
     } catch (error) {
-      console.error('Error al añadir cliente:', error);
-      alert('Hubo un problema al intentar añadir el cliente.');
+      alert("Ya tienes registrado un Cliente con este email.");
     }
   };
 
   return (
     <div className="add-client-container">
-      <button className="back-button" onClick={onBackClick}>&lt;</button>
+      <button className="back-button" onClick={onBackClick}>
+        &lt;
+      </button>
       <h2 className="add-client-title">Añadir Cliente</h2>
       <form className="add-client-form" onSubmit={handleSubmit}>
         <div className="form-group">
@@ -48,7 +52,7 @@ function AddClient({ onBackClick, fetchClients}) {
             type="text"
             id="fullName"
             name="fullName"
-            placeholder='Nombre y Apellido'
+            placeholder="Nombre y Apellido"
             className="form-input"
             value={fullName}
             onChange={(e) => setFullName(e.target.value)}
@@ -60,7 +64,7 @@ function AddClient({ onBackClick, fetchClients}) {
             type="email"
             id="email"
             name="email"
-            placeholder='Email'
+            placeholder="Email"
             className="form-input"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -72,7 +76,7 @@ function AddClient({ onBackClick, fetchClients}) {
             type="number"
             id="age"
             name="age"
-            placeholder='Edad'
+            placeholder="Edad"
             className="form-input"
             value={age}
             onChange={(e) => setAge(e.target.value)}
@@ -84,18 +88,19 @@ function AddClient({ onBackClick, fetchClients}) {
             type="tel"
             id="phone"
             name="phone"
-            placeholder='Numero de Teléfono'
+            placeholder="Numero de Teléfono"
             className="form-input"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
             required
           />
         </div>
-        <button type="submit" className="add-client-button">Añadir</button>
+        <button type="submit" className="add-client-button">
+          Añadir
+        </button>
       </form>
     </div>
   );
 }
 
 export default AddClient;
-

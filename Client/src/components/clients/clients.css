@@ -1,31 +1,30 @@
 .clients-container {
-  padding: 30px; 
-  background-color: #ADD8E6; 
-  margin: 2% auto; 
-  border-radius: 15px; 
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); 
-  max-width: 80%; 
+  padding: 30px;
+  background-color: #add8e6;
+  margin: 2% auto;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  max-width: 80%;
   width: 100%;
-  
 }
 
 .clients-title {
-  margin-bottom: 30px; 
-  color: #fff; 
+  margin-bottom: 30px;
+  color: #fff;
   font-size: 1.5rem;
 }
 
 .add-client-button {
-  background-color:#007bff; /* Verde, puedes cambiarlo por el color que prefieras */
+  background-color: #007bff; /* Verde, puedes cambiarlo por el color que prefieras */
   color: white;
   padding: 10px;
   margin-bottom: 10px;
-  max-width: 100%; 
+  max-width: 100%;
   border: none;
   border-radius: 7px;
   cursor: pointer;
   font-size: 16px;
-  transition: background-color 0.3s
+  transition: background-color 0.3s;
 }
 
 .add-client-button:hover {
@@ -34,11 +33,11 @@
 }
 
 .clients-list {
-  background-color: #f4f4f4; 
-  max-height: 450px; 
-  overflow-y: auto; 
-  border-radius: 15px; 
-  padding: 20px; 
+  background-color: #f4f4f4;
+  max-height: 450px;
+  overflow-y: auto;
+  border-radius: 15px;
+  padding: 20px;
 }
 
 .client-item {
@@ -46,7 +45,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 15px;
-  border-bottom: 2px solid #ddd; 
+  border-bottom: 2px solid #ddd;
 }
 
 .client-item:last-child {
@@ -56,19 +55,19 @@
 .client-item span {
   flex: 1;
   text-align: center;
-  padding: 10px 0; 
-  font-size: 1.1rem; 
+  padding: 10px 0;
+  font-size: 1.1rem;
   color: gray;
 }
 
 @media (max-width: 768px) {
   .clients-container {
-    margin: 20px; 
+    margin: 20px;
     padding: 20px;
   }
 
   .clients-title {
-    font-size: 1.3rem; 
+    font-size: 1.3rem;
   }
 
   .clients-list {
@@ -87,11 +86,7 @@
   }
 
   .client-item span {
-    padding: 5px 0; 
-    font-size: 1rem; 
+    padding: 5px 0;
+    font-size: 1rem;
   }
 }
-
-  
- 
-  
