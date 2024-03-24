@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import "./addClient.css";
 
-function AddClient({ onBackClick }) {
+function AddClient({ onBackClick, fetchClients}) {
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [age, setAge] = useState('');
@@ -28,9 +28,9 @@ function AddClient({ onBackClick }) {
         userId
       });
 
-      // Manejo de respuesta exitosa
       console.log('Cliente añadido:', response.data);
       alert('Cliente añadido exitosamente.');
+      fetchClients()
       onBackClick(); 
     } catch (error) {
       console.error('Error al añadir cliente:', error);
