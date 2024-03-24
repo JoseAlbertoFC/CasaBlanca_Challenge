@@ -1,1 +1,55 @@
-/* Aca va el css de SideBar */
+.sidebar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: start;
+  padding: 20px;
+  width: 250px; 
+  height: 100vh;
+  background-color: #add8e6; /* Azul celeste */
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-title {
+  margin-bottom: 2rem;
+  color: #fff; 
+}
+
+.sidebar-button {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 1rem;
+  background-color: #f0ffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.sidebar-button:hover {
+  background-color: #e0ffff;
+}
+
+@media (max-width: 768px) {
+  .sidebar-container {
+    width: 200px;
+  }
+}
+
+@media (max-width: 500px) {
+  .sidebar-container {
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    position: relative;
+  }
+
+  .sidebar-title,
+  .sidebar-button {
+    text-align: center;
+  }
+
+  .sidebar-button {
+    margin-bottom: 0.5rem;
+  }
+}
