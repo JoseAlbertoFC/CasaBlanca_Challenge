@@ -4,9 +4,9 @@
   align-items: flex-start;
   justify-content: start;
   padding: 20px;
-  width: 250px; 
+  width: 270px; 
   height: 100vh;
-  background-color: #add8e6; /* Azul celeste */
+  background-color: #add8e6; 
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
 }
 
@@ -30,7 +30,7 @@
   background-color: #e0ffff;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1025px) {
   .sidebar-container {
     width: 200px;
   }
