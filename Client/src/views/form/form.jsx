@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from 'axios';
 import "./form.css";
 
 function Form() {
@@ -7,11 +8,30 @@ function Form() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const navigate = useNavigate();
 
-  const handleRegister = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
-    
-    console.log("Registro:", fullName, email, password, confirmPassword);
+
+    if (password !== confirmPassword) {
+      alert("Las contraseñas no coinciden.");
+      return;
+    }
+
+    try {
+      const response = await axios.post('http://localhost:3001/users/createUser', {
+        fullName,
+        email,
+        password
+      });
+
+      console.log("Respuesta de registro:", response.data);
+      alert("Registro exitoso. Por favor, ingresa con tu cuenta.");
+      navigate('/login');
+    } catch (error) {
+      console.error('Error de registro:', error);
+      alert("Hubo un problema al intentar registrarse.");
+    }
   };
 
   return (
