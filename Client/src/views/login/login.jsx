@@ -18,9 +18,10 @@ function Login() {
         password
       });
 
-      const { accessToken } = response.data;
+      const { userId, accessToken } = response.data;
       if (accessToken) {
         localStorage.setItem("accessToken", accessToken);
+        localStorage.setItem("userId", userId);
         navigate('/');
       }
     } catch (error) {

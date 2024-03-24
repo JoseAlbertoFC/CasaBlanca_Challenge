@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Login from "./views/login/login";
 import Form from "./views/form/form";
@@ -10,7 +10,7 @@ function App() {
 
     return accessToken ? children : <Navigate to="/login" replace />;
   };
-  
+
   return (
     <div>
       <Routes>

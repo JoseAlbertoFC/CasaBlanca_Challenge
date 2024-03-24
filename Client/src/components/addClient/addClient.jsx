@@ -1,16 +1,41 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import "./addClient.css";
 
 function AddClient({ onBackClick }) {
-  // Estados para cada campo del formulario
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [age, setAge] = useState('');
   const [phone, setPhone] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Añadiendo cliente:', fullName, email, age, phone);
+
+    const userId = localStorage.getItem('userId');
+
+    if (!userId) {
+      alert('No se ha encontrado el ID del usuario.');
+      return;
+    }
+
+    try {
+      const response = await axios.post('http://localhost:3001/clients/createClient', {
+        fullName,
+        email,
+        age: parseInt(age, 10), 
+        phoneNum: phone,
+        status: 'Habilitado',
+        userId
+      });
+
+      // Manejo de respuesta exitosa
+      console.log('Cliente añadido:', response.data);
+      alert('Cliente añadido exitosamente.');
+      onBackClick(); 
+    } catch (error) {
+      console.error('Error al añadir cliente:', error);
+      alert('Hubo un problema al intentar añadir el cliente.');
+    }
   };
 
   return (

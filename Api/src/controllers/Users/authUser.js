@@ -16,6 +16,7 @@ const authUser = async (email, password) => {
   );
 
   return {
+    userId: user.id,
     email: user.email,
     name: user.name,
     accessToken,
