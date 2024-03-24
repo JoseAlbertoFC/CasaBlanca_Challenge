@@ -16,7 +16,9 @@ function Clients() {
     const userId = localStorage.getItem('userId');
     if (userId) {
       try {
-        const response = await axios.get(`http://localhost:3001/clients/showClients`, { params: { userId } });
+        const response = await axios.get(`http://localhost:3001/clients/showClients`, {
+          headers: { userId }
+        });
         setClients(response.data);
       } catch (error) {
         console.error('Error al obtener los clientes:', error);

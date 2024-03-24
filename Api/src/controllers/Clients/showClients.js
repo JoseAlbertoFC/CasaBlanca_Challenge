@@ -1,12 +1,13 @@
 const { User, Client } = require("../../db");
 
-const showClients = async () => {
+const showClients = async (userId) => {
   try {
     return await Client.findAll({
       include: [
         {
           model: User,
           as: "user",
+          where: { id: userId }
         },
       ],
     });

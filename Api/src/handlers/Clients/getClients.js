@@ -2,7 +2,11 @@ const { showClients } = require("../../controllers/Clients/showClients");
 
 const getClients = async (req, res) => {
   try {
-    const result = await showClients();
+    const userId = req.headers.userid;
+    if (!userId) {
+      throw new Error("No userId provided");
+    }
+    const result = await showClients(userId);
     res.status(200).json(result)
   } catch (error) {
     console.log(error.message);
