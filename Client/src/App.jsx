@@ -1,10 +1,19 @@
-import React from "react";
-import { Routes, Route } from "react-router-dom";
+import React, {useEffect} from "react";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import Login from "./views/login/login";
 import Form from "./views/form/form";
 import Home from "./views/home/home";
 
 function App() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const accessToken = localStorage.getItem("accessToken");
+    if (!accessToken) {
+      navigate("/login");
+    }
+  }, [navigate]);
+  
   return (
     <div>
       <Routes>

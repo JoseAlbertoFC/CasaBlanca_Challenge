@@ -1,15 +1,34 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from 'axios';
 import "./login.css";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    console.log("Email:", email, "Password:", password);
+
+    try {
+      console.log(email, password)
+      const response = await axios.post('http://localhost:3001/users/loginUser', {
+        email,
+        password
+      });
+
+      const { accessToken } = response.data;
+      if (accessToken) {
+        localStorage.setItem("accessToken", accessToken);
+        navigate('/');
+      }
+    } catch (error) {
+      console.error('Login error:', error);
+      window.alert("Hubo un problema al intentar ingresar.");
+    }
   };
+  
 
   return (
     <div className="login-page-container">
