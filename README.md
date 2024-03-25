@@ -1,11 +1,11 @@
-# CasaBlanca_Challenge
+# CasaBlanca Challenge
 
 - Descripcion
 
 Este proyecto es el Challenge técnico de la empresa CasaBlanca, el cual consiste en la implementación de un CRM con funcionalidades básicas como: Registro de Usuarios, 
 Login de Usuarios, Registro de Clientes, Visualización de Clientes creados, Opción para habilitar y deshabilitar Clientes, Boton para eliminar Clientes, Visualización de Usuarios registrados en la app y Boton de Logout.
 
-# **Instrucciones de Instalación**
+# **Instrucciones de Instalación.**
 
 - Paso 1 : Clonacion del Repositorio 
 
@@ -66,11 +66,192 @@ PORT=3001
 
 Ten en cuenta que debes cambiar la DB_PASSWORD por la contraseña de tu Base de Datos y la DB_USER por el usuario de tu Base de datos.
 
-# **Instrucciones de Uso**
+# **Instrucciones de Uso.**
 
 Inicialmente la app estara vacia, asi que deberas crear tu Usuario en el formulario de Registro, posteriormente la app te redirigirá al Login, donde ingresaras con tu Email y Contraseña. Al ingresar notaras que la lista de Clientes esta vacia, debes hacer click en el boton de "Añadir Cliente" y completar el formulario para crear un Cliente nuevo. Una vez hecho eso la app te va a redirigir a el componente de la lista de Clientes. Una vez ahí podras habilitar y deshabilitar al usuario en la casilla de check o eliminarlo en el boton de eliminacion (x).
 
 Luego podras dirigirte a la sección de Usuarios donde podras ver el Usuario e Email con el cual te registraste debido a que este componente te mostrará a todos los Usuarios registrados en la app. Puedes corroborarlo haciendo logout en el boton de la esquina superior derecha, registrar otro usuario con un Email diferente y volviendo a ingresar a la app con tu cuenta o la cuenta del usuario nuevo. 
+
+# **Información Adicional (EndPoints).**
+
+1. (localhost:3001/users/createUser) : Este endPoint es el que permite la creación de Usuarios, este recibe por body los parametros presentes en el formulario, ejemplo:
+
+`{
+	"fullName": "Jose Fuentes",
+	"email": "josefuentes@gmail.com",
+	"password": "josefuentes"
+}`
+
+Respuesta
+
+`{
+	"id": "e9a4000c-c541-4c46-a7ff-6915ecc650ae",
+	"fullName": "Jose Fuentes",
+	"email": "josefuentes@gmail.com",
+	"password": "josefuentes"
+}`
+
+2. (localhost:3001/users/loginUser) : Este endPoint es el que permite que el Usuario pueda hacer login, este recibe por body los parametros presentes en el formulario, ejemplo:
+
+`{
+	"email": "josefuentes@gmail.com",
+	"password": "josefuentes"
+}`
+
+Respuesta
+
+`{
+	"userId": "e9a4000c-c541-4c46-a7ff-6915ecc650ae",
+	"email": "josefuentes@gmail.com",
+	"userName": "Jose Fuentes",
+	"accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJlOWE0MDAwYy1jNTQxLTRjNDYtYTdmZi02OTE1ZWNjNjUwYWUiLCJlbWFpbCI6Impvc2VmdWVudGVzQGdtYWlsLmNvbSIsImlhdCI6MTcxMTMxNjQ2OCwiZXhwIjoxNzEzOTQ0NDY4fQ.b7pGKiNxuDQEz-SUUb1SBcpyDJGeEMftOP12jHJJAOM",
+	"message": "Perfect! You are logged in."
+}`
+
+3. (localhost:3001/users/showUsers) : Este endPoint es el que permite mostrar la lista de Usuarios, este es una peticion de tipo GET asi que no recibe nada por body y da una respuesta, ejemplo:
+
+Respuesta
+
+`[
+	{
+		"id": "0f998228-d30d-4ffc-b9b4-9aa8f491c0c3",
+		"fullName": "Mariana Martin",
+		"email": "marianamartin@gmai.com",
+		"clients": []
+	},
+	{
+		"id": "a63feedb-9cbe-44a0-8db2-1582dce0e304",
+		"fullName": "Juana Manso",
+		"email": "juanamanso@gmail.com",
+		"clients": [
+			{
+				"id": "f74b4cf3-0e04-4b38-b8a8-5f4827457f4e",
+				"fullName": "Kevin",
+				"email": "kevin@gmail.com",
+				"age": "29",
+				"phoneNum": "+5412345678",
+				"status": "Habilitado",
+				"userId": "a63feedb-9cbe-44a0-8db2-1582dce0e304"
+			},
+			{
+				"id": "c15ce88e-692e-4ad1-8a7c-b12146c6929d",
+				"fullName": "Gustavo Rojas",
+				"email": "gustavorojas@gmail.com",
+				"age": "25",
+				"phoneNum": "+541235896",
+				"status": "Habilitado",
+				"userId": "a63feedb-9cbe-44a0-8db2-1582dce0e304"
+			},
+        ]
+	},
+	{
+		"id": "e525bcca-428e-4bd2-8453-4597c27cf984",
+		"fullName": "JoseFuenmayor",
+		"email": "josefuenmayor@gmail.com",
+		"clients": []
+	}
+]`
+
+4. (localhost:3001/clients/createClient) : Este endPoint es el que permite la creación de Clientes, este recibe por body los parametros presentes en el formulario, ejemplo:
+
+`{
+	"fullName": "Pedro Perez",
+	"email": "pedroperez@gmail.com",
+	"age": "42",
+	"phoneNum": "+5487654321",
+	"status": "Habilitado",
+	"userId": "a63feedb-9cbe-44a0-8db2-1582dce0e304"
+}`
+
+Respuesta
+
+`{
+	"id": "0579179c-ccd3-423f-b91a-bb52e73937ee",
+	"fullName": "Pedro Perez",
+	"email": "pedroperez@gmail.com",
+	"age": "42",
+	"phoneNum": "+5487654321",
+	"status": "Habilitado",
+	"userId": "a63feedb-9cbe-44a0-8db2-1582dce0e304"
+}`
+
+5. (localhost:3001/clients/showClients) : Este endPoint es el que permite mostrar la lista de Clientes, este es una peticion de tipo GET asi que no recibe nada por body y da una respuesta, ejemplo:
+
+Respuesta
+
+`[
+	{
+		"id": "0579179c-ccd3-423f-b91a-bb52e73937ee",
+		"fullName": "Pedro Perez",
+		"email": "pedroperez@gmail.com",
+		"age": "42",
+		"phoneNum": "+5487654321",
+		"status": "Habilitado",
+		"userId": "a63feedb-9cbe-44a0-8db2-1582dce0e304",
+		"user": {
+			"id": "a63feedb-9cbe-44a0-8db2-1582dce0e304",
+			"fullName": "Juana Manso",
+			"email": "juanamanso@gmail.com",
+			"password": "puertomadero"
+		}
+	},
+	{
+		"id": "6eac2189-372d-4c54-8810-c8f81e52be89",
+		"fullName": "Kevin",
+		"email": "kevin@gmail.com",
+		"age": "29",
+		"phoneNum": "+5412345678",
+		"status": "Deshabilitado",
+		"userId": "a63feedb-9cbe-44a0-8db2-1582dce0e304",
+		"user": {
+			"id": "a63feedb-9cbe-44a0-8db2-1582dce0e304",
+			"fullName": "Juana Manso",
+			"email": "juanamanso@gmail.com",
+			"password": "puertomadero"
+		}
+	}
+]`
+
+6. (localhost:3001/clients/deleteClient/${id}) : Este endPoint es el que permite eliminar Clientes de la lista, este recibe por params el id del Cliente que se desea eliminar y da como respuesta:
+
+`{
+  message: "This Client was successfully removed",
+  deletedClient: {
+		"id": "6eac2189-372d-4c54-8810-c8f81e52be89",
+		"fullName": "Kevin",
+		"email": "kevin@gmail.com",
+		"age": "29",
+		"phoneNum": "+5412345678",
+		"status": "Deshabilitado",
+		"userId": "a63feedb-9cbe-44a0-8db2-1582dce0e304",
+		"user": {
+			"id": "a63feedb-9cbe-44a0-8db2-1582dce0e304",
+			"fullName": "Juana Manso",
+			"email": "juanamanso@gmail.com",
+			"password": "puertomadero"
+		}
+	},
+}`
+
+7. (localhost:3001/clients/updateClient/${id}) : Este endPoint es el que permite modificar Clientes de la lista, este recibe por params el id del Cliente que se desea modificar y recibe tambien por body el objeto Cliente, ejemplo:
+
+`{
+	"fullName": "Kevin",
+	"email": "kevin@gmail.com",
+	"age": "29",
+	"phoneNum": "+5412345678",
+	"status": "Deshabilitado"
+}`
+
+Respuesta
+
+`{
+	"fullName": "Kevin",
+	"email": "kevin@gmail.com",
+	"age": "29",
+	"phoneNum": "+5412345678",
+	"status": "Habilitado"
+}`
 
 # **¡Espero que este Proyecto sea de tu agrado y que tengas un lindo dia!**
 
